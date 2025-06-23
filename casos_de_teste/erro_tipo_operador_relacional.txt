@@ -1,0 +1,7 @@
+program OpRelacionalIncompativel;
+var x : integer;
+var y : boolean;
+begin
+  x := 10;
+  y := x > true;
+end

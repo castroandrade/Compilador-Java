@@ -1,0 +1,7 @@
+program Duplicada;
+var x : integer;
+var y : boolean;
+var x : boolean;
+begin
+  y := true;
+end

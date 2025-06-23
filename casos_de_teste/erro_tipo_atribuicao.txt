@@ -1,0 +1,5 @@
+program AtribuicaoIncompativel;
+var x : integer;
+begin
+  x := true;
+end

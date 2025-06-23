@@ -1,0 +1,5 @@
+program NaoDeclarada;
+var x : integer;
+begin
+  x := y + 5;
+end

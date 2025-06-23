@@ -1,0 +1,12 @@
+program ContextoValido;
+var a : integer;
+var b : boolean;
+begin
+  a := 10;
+  b := a > 5;
+
+  if b = true then
+    a := a * 2;
+
+  b := (a = 20) or (b and true);
+end
