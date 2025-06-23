@@ -1,4 +1,4 @@
-package Analisador.Lexico;
+package compilador.lexer;
 
 /**
  * Enumeração que representa todos os tipos de tokens possíveis na linguagem.
@@ -12,11 +12,12 @@ public enum TokenType {
     RPAREN,     // )
     SEMICOLON,  // ;
     PLUS,       // +
+    MINUS,      // -
     TIMES,      // *
     DIV,        // /
     LT,         // <
     GT,         // >
-
+    EQ,         // =
     // --- Operadores de um ou mais caracteres ---
     COLON, // :
     ASSIGN,     // :=

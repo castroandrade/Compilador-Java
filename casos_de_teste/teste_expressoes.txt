@@ -1,0 +1,9 @@
+program TesteExpressoes;
+ var resultado : integer;
+ var x : integer;
+ var y : integer;
+begin
+  x := 2;
+  y := 3;
+  resultado := x + y * 10;
+end

@@ -1,4 +1,4 @@
-package Analisador.Lexico;
+package compilador.lexer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -79,6 +79,8 @@ public class Scanner {
             case ';': addToken(TokenType.SEMICOLON); break;
             case '+': addToken(TokenType.PLUS); break;
             case '*': addToken(TokenType.TIMES); break;
+            case '=': addToken(TokenType.EQ); break;
+            case '-': addToken(TokenType.MINUS); break;
 
             // Operadores que podem ter mais de um caractere
             case ':':

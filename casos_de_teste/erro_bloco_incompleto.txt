@@ -1,0 +1,5 @@
+program ErroBloco;
+var
+  a : integer;
+begin
+  a := 1;

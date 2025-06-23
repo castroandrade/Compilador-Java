@@ -1,0 +1,6 @@
+program ErroExpressao;
+var
+  b : integer;
+begin
+  b := 10 * ;
+end

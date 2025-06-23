@@ -1,4 +1,4 @@
-package Analisador.Lexico;
+package compilador.lexer;
 
 /**
  * Representa um token, a unidade fundamental da análise léxica.
