@@ -4,10 +4,12 @@ import compilador.ast.ASTNode;
 import compilador.lexer.Scanner;
 import compilador.parser.Parser;
 import compilador.visitor.ASTPrinter;
-import compilador.visitor.CheckerVisitor; // Importe o novo visitor
+import compilador.visitor.CheckerVisitor;
+import compilador.visitor.CodeGenVisitor; // Importe o novo visitor
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List; // Importe a classe List
 
 public class Main {
     public static void main(String[] args) {
@@ -17,6 +19,9 @@ public class Main {
         }
 
         String filePath = args[0];
+        // Define o nome do arquivo de saída
+        String outputFilePath = filePath.replaceFirst("[.][^.]+$", "") + ".tam";
+
         System.out.println("Compilando o arquivo: " + filePath);
         System.out.println("---------------------------------------------------------");
 
@@ -29,24 +34,27 @@ public class Main {
             // 2. Análise Sintática e Construção da AST
             Parser parser = new Parser(scanner);
             ASTNode astRoot = parser.parse();
-            System.out.println("Sintaxe verificada com sucesso. AST construida.");
+            System.out.println("Sintaxe verificada com sucesso.");
 
             // 3. Análise de Contexto
             CheckerVisitor checker = new CheckerVisitor();
-            astRoot.accept(checker); // Percorre a AST aplicando as regras de contexto
-            System.out.println("Analise de contexto finalizada com sucesso. O programa esta correto.");
+            astRoot.accept(checker);
+            System.out.println("Analise de contexto finalizada com sucesso.");
 
-            // 4. Visualização da AST
+            // 4. Geração de Código (A NOVA ETAPA)
+            CodeGenVisitor codeGen = new CodeGenVisitor();
+            astRoot.accept(codeGen);
+            List<String> objectCode = codeGen.getObjectCode();
+
+            // 5. Salva o código-objeto em um arquivo .tam
+            Files.write(Paths.get(outputFilePath), objectCode);
             System.out.println("---------------------------------------------------------");
-            System.out.println("Visualizacao da Arvore Sintatica Abstrata (AST):");
-            ASTPrinter printer = new ASTPrinter();
-            String astVisual = astRoot.accept(printer);
-            System.out.println(astVisual);
+            System.out.println("Compilacao finalizada. Codigo-objeto gerado em: " + outputFilePath);
+
 
         } catch (IOException e) {
             System.err.println("Erro de arquivo: " + e.getMessage());
         } catch (Error e) {
-            // Captura tanto os erros de sintaxe do Parser quanto os de contexto do Checker
             System.err.println("ERRO DE COMPILACAO: " + e.getMessage());
         } catch (Exception e) {
             System.err.println("Ocorreu um erro inesperado durante a compilacao:");
