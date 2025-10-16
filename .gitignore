@@ -1,0 +1,34 @@
+# Java - arquivos compilados
+*.class
+*.jar
+*.war
+*.ear
+
+# Diretórios de build/saída
+/out/
+/bin/
+/build/
+/target/
+
+# IDEs e metadados
+.project
+.classpath
+.settings/
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# SO / utilitários
+.DS_Store
+Thumbs.db
+
+# Logs e temporários
+*.log
+logs/
+tmp/
+temp/
+
+# Arquivos auxiliares de compilação local
+sources.txt
+
